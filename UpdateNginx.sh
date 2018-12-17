@@ -33,6 +33,7 @@ NGINXOLD=1.15.7
 OPENSSLOLD=1.1.1a
 
 
+
 #----------------------------------------------------------------------------------------------------------------
 #                                                                                                       Funciones
 #----------------------------------------------------------------------------------------------------------------
@@ -167,17 +168,17 @@ if (whiptail --title "Actualizar NGINX" --yesno "Desea actualizar Nginx." 8 78);
 			make install &> /dev/null
 		echo -e "XXX\n100\n Instalar NGINX... Done.\nXXX"
 		sleep 0.5
-		
-		# REINICIO
-		if (whiptail --title "Actualizar NGINX" --yesno "Desea Reiciar el equipo." 8 78); then
-			# SI ACEPTA -----
-			reboot
-		else
-			#SI NO ACEPTA -----
-			exit 1
-		fi	
 
 	} |whiptail --title "Actualizar NGINX" --gauge "Please wait while installing" 6 60 0
+	
+	# REINICIO
+	if (whiptail --title "Actualizar NGINX" --yesno "Desea Reiciar el equipo." 8 78); then
+		# SI ACEPTA -----
+		reboot
+	else
+		#SI NO ACEPTA -----
+		exit 1
+	fi	
 	
 else
 	#SI NO ACEPTA -----
