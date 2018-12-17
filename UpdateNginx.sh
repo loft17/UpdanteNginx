@@ -4,10 +4,10 @@
 #                                                                                                            Info
 #----------------------------------------------------------------------------------------------------------------
 # name: UpdateNginx
-# version: 2.0.0
+# version: 0.1.0
 # autor: joseRomera <web@joseromera.net>
 # web: http://www.joseromera.net
-# Copyright (C) 2018
+# Copyright (C) 2016-2018
 #----------------------------------------------------------------------------------------------------------------
 #
 # This program is free software; you can redistribute it and/or modify
@@ -29,8 +29,6 @@
 #----------------------------------------------------------------------------------------------------------------
 #                                                                                                       Variables
 #----------------------------------------------------------------------------------------------------------------
-
-
 NGINXOLD=1.15.7
 OPENSSLOLD=1.1.1a
 
@@ -39,10 +37,8 @@ OPENSSLOLD=1.1.1a
 #----------------------------------------------------------------------------------------------------------------
 #                                                                                                       Funciones
 #----------------------------------------------------------------------------------------------------------------
-
-# If you cannot understand this, read Bash_Shell_Scripting#if_statements again.
 if (whiptail --title "Actualizar NGINX" --yesno "Desea actualizar Nginx." 8 78); then
-	# SI ACEPTA
+	# SI ACEPTA ---------------
    
 	# VERSION NGINX
 	NGINXNEW=$(whiptail --inputbox "Que version quiere instalar?" 8 78 $NGINXOLD --title "Actualizar NGINX" 3>&1 1>&2 2>&3)
@@ -175,17 +171,16 @@ if (whiptail --title "Actualizar NGINX" --yesno "Desea actualizar Nginx." 8 78);
 		
 		# REINICIO
 		if (whiptail --title "Actualizar NGINX" --yesno "Desea Reiciar el equipo." 8 78); then
-			# SI ACEPTA
+			# SI ACEPTA -----
 			reboot
 		else
-			#SI NO ACEPTA
+			#SI NO ACEPTA -----
 			exit 1
 		fi	
 
 	} |whiptail --title "Actualizar NGINX" --gauge "Please wait while installing" 6 60 0
 	
-	
 else
-	#SI NO ACEPTA
+	#SI NO ACEPTA -----
     echo "CANCEL."
 fi
